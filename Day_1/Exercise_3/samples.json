@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1001,
+    "name": {
+      "firstName": "Eddard",
+      "lastName": "Stark"
+    },
+    "gender": "male",
+    "interests": ["c", "c++"]
+  },
+  {
+    "id": 1002,
+    "name": {
+      "firstName": "Jamie",
+      "lastName": "Lannister"
+    },
+    "gender": "male",
+    "interests": ["c#", "java"]
+  },
+  {
+    "id": 1003,
+    "name": {
+      "firstName": "Tyrion",
+      "lastName": "Lannister"
+    },
+    "gender": "male",
+    "interests": ["node", "react"]
+  },
+  {
+    "id": 1004,
+    "name": {
+      "firstName": "Aegon",
+      "lastName": "Targaryen"
+    },
+    "gender": "male",
+    "interests": ["c", "c++"]
+  },
+  {
+    "id": 1005,
+    "name": {
+      "firstName": "Rhaenyra",
+      "lastName": "Targaryen"
+    },
+    "gender": "female",
+    "interests": ["node", "react"]
+  },
+  {
+    "id": 1006,
+    "name": {
+      "firstName": "Solid",
+      "lastName": "Snake"
+    },
+    "gender": "male",
+    "interests": ["c", "c++"]
+  },
+  {
+    "id": 1007,
+    "name": {
+      "firstName": "Venom",
+      "lastName": "Snake"
+    },
+    "gender": "male",
+    "interests": ["c", "c++"]
+  },
+  {
+    "id": 1008,
+    "name": {
+      "firstName": "Altaïr",
+      "lastName": "Ibn-LaʼAhad"
+    },
+    "gender": "male",
+    "interests": ["c#", "java"]
+  },
+  {
+    "id": 1009,
+    "name": {
+      "firstName": "Vinay",
+      "lastName": "Gajjar"
+    },
+    "gender": "female",
+    "interests": ["c", "c++"]
+  },
+  {
+    "id": 1010,
+    "name": {
+      "firstName": "Miles",
+      "lastName": "Morales"
+    },
+    "gender": "male",
+    "interests": ["node", "react"]
+  },
+  {
+    "id": 1011,
+    "name": {
+      "firstName": "Tony",
+      "lastName": "Stark"
+    },
+    "gender": "male",
+    "interests": ["c", "c++"]
+  },
+  {
+    "id": 1012,
+    "name": {
+      "firstName": "Sofia",
+      "lastName": "Sartor"
+    },
+    "gender": "female",
+    "interests": ["node", "react"]
+  },
+  {
+    "id": 1013,
+    "name": {
+      "firstName": "Maria",
+      "lastName": "Thorpe"
+    },
+    "gender": "female",
+    "interests": ["c", "c++"]
+  },
+  {
+    "id": 1014,
+    "name": {
+      "firstName": "Ezio",
+      "lastName": "Auditore"
+    },
+    "gender": "male",
+    "interests": ["c#", "java"]
+  },
+  {
+    "id": 1015,
+    "name": {
+      "firstName": "Miguel",
+      "lastName": "O'Hara"
+    },
+    "gender": "male",
+    "interests": ["node", "react"]
+  }
+]
