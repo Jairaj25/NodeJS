@@ -1,5 +1,5 @@
 import _ from 'lodash'
-
+import url from 'url'
 const companies = [
     { name: "Company One", category: "Finance", start: 1981, end: 2004 },
     { name: "Company Two", category: "Retail", start: 1992, end: 2008 },
@@ -106,3 +106,15 @@ console.log(callIncreCount())
 //Question 10
 
 //create a function that destructures the query parameters of a URL and adds them in an object as key value pairs and then returns the objects
+
+const urlToBeParsed ='https://www.google.com/search?q=key+value'
+var object = {}
+
+const extractKeyValuePair =  (urlToBeParsed) =>{
+    const extractedKeyValuePairs = new URLSearchParams(urlToBeParsed)
+    object = {...extractedKeyValuePairs}
+    return object;
+}
+
+console.log('\n\n Question 10: extract key value pairs from url: ',extractKeyValuePair(urlToBeParsed))
+
