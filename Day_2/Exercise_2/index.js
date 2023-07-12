@@ -1,4 +1,4 @@
-person = {
+const person = {
     name: 'Jairaj Upadhyay',
     phone: 98989898,
     gender: 'Male',
