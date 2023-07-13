@@ -1,0 +1,68 @@
+[
+    {
+        "email": "Miraak25@gmail.com",
+        "password" : "FirstDragonPriest",
+        "firstName": "Dragon",
+        "lastName": "Priest"
+    },
+    {
+        "email": "MaxPayne123@gmail.com",
+        "password" : "OriginalBulletTimeMan",
+        "firstName": "Max",
+        "lastName": "Payne"
+    },
+    {
+        "email": "JonSnow@gmail.com",
+        "password" : "TheTrueKing",
+        "firstName": "Aegon",
+        "lastName": "Targaryen"
+    },
+    {
+        "email": "TyrionLan@gmail.com",
+        "password" : "TheImp",
+        "firstName": "Tyrion",
+        "lastName": "Lannister"
+    },
+    {
+        "email": "TheBigBoss@gmail.com",
+        "password" : "CardBoardBoxMan",
+        "firstName": "Solid",
+        "lastName": "Snake"
+    },
+    {
+        "email": "Altaïr25@gmail.com",
+        "password" : "BestAssassinHere",
+        "firstName": "Altaïr",
+        "lastName": "Ibn-LaʼAhad"
+    },
+    {
+        "email": "JairajU25@gmail.com",
+        "password" : "10191822@BeA",
+        "firstName": "Jairaj",
+        "lastName": "Upadhyay"
+    },
+    {
+        "email": "IAmIronMan@gmail.com",
+        "password" : "d00a5268782fa9a78256591f7829f8600175e34b",
+        "firstName": "Tony",
+        "lastName": "Stark"
+    },
+    {
+        "email": "EzioAuditore@gmail.com",
+        "password" : "ReQuIeScAtInPaCe",
+        "firstName": "Ezio",
+        "lastName": "Auditore"
+    },
+    {
+        "email": "Spiderman2099@gmail.com",
+        "password" : "ItWasACanonEvent",
+        "firstName": "Miguel",
+        "lastName": "O'Hara"
+    },
+    {
+        "email": "MMEarth42@gmail.com",
+        "password" : "TheBlackSpiderman",
+        "firstName": "Miles",
+        "lastName": "Morales"
+    }
+]
