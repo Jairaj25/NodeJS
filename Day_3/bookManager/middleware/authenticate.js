@@ -1,16 +1,14 @@
 import Jwt from "jsonwebtoken";
-import createError from "http-errors";
 
-const authenticate = (res, req, next) => {
+const authenticate = (res, req) => {
     const bearerToken = req.headers["authorization"];
     const { verify } = Jwt;
   try {
     const token = bearerToken.split(" ")[1];
-    verify(token, process.env.PRIVATE_KEY);
-    next();
+    verify(token, );
   } catch (error) {
     
-      createError(403, new Error("You Don't have proper authorization to access this page"))
+      return ("You Don't have proper authorization to access this page")
   }
 };
 
