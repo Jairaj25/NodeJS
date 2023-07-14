@@ -7,7 +7,7 @@ router.get('/', bookControllers.getAllBooksController);
 router.get('/author/:authorName', bookControllers.getAllBooksByAuthorController);
 router.post('/', bookControllers.createBookController);
 router.delete('/author/:authorName', bookControllers.deleteBookByAuthorController);
-router.get('/author/id/:id', bookControllers.getBooksByIdController)
-router.delete('/author/id/:id', bookControllers.deleteBookByIdController);
+router.get('/id/:id', bookControllers.getBooksByIdController)
+router.delete('/id/:id', bookControllers.deleteBookByIdController);
 
 export default router;
