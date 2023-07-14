@@ -12,26 +12,11 @@ const getAllUsers = async () => {
     }
 };
 
-const getUsersByEmail = async (emailToFind) => {
-    try {
-        const userFound = await userModel.find({ email: emailToFind })
-        if (userFound.lenghth > 0) {
-            return userFound;
-        }
-        else {
-            return "Wrong Credentials (Email)"
-        }
-    }
-    catch (error) {
-        return "User Not Found"
-    }
-}
-
 const getUserById = async (id) => {
     try {
         const userFound = await userModel.findById(id)
         if (userFound) {
-            return userFound
+            return (userFound.email, userFound.lastname,userFound.firstname)
         }
         else {
             return "Wrong Credentials (ID)"
@@ -75,7 +60,8 @@ const loginValidation = async (emailAndPassword) => {
         const emailFound = await userModel.findOne({ email: email });
         if (emailFound && emailFound.password === password) {
             return "Login Successful"
-        } else {
+        } 
+        else {
             return ("Wrong Credentials")
         }
 
@@ -86,4 +72,4 @@ const loginValidation = async (emailAndPassword) => {
 }
 
 
-export { getAllUsers, getUsersByEmail, getUserById, createNewUser, deleteUserById, loginValidation }
+export { getAllUsers, getUserById, createNewUser, deleteUserById, loginValidation }

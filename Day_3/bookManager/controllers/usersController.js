@@ -6,12 +6,6 @@ const getAllUsersController = async (req, res) => {
     res.send(allUsers)
 }
 
-const getUsersByEmailController = async (req, res) => {
-    const {email} = req.params
-    const foundUser = await userServices.getUsersByEmail(email);
-    res.send(foundUser)
-}
-
 const getUserByIdController = async (req, res) => {
     const {id} = req.params
     const foundUser = await userServices.getUserById(id);
