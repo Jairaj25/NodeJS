@@ -36,7 +36,30 @@ app.use(function(req, res, next) {
 });
 
 // error handler
+// app.use((req, res, next) => {
+//   const originalJson = res.json;
+//   res.json = (data) => {
+//     if (!data.error) {
+//       const formattedResponse = {
+//         status: status(res.statusCode),
+//         data: _.isArray(data) ? [...data] : _.isObject(data) ? [data] : [],
+//         error: null,
+//       };
+//       return originalJson.call(res, formattedResponse);
+//     }
+//     return originalJson.call(res, data);
+//   };
+//   next();
+// });
+
 app.use(function(err, req, res, next) {
+
+  // res.status(err.status).json({
+  //   status: status(res.statusCode),
+  //   data: [],
+  //   error: err.message
+  // })
+
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

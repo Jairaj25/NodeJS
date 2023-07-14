@@ -1,13 +1,13 @@
 import { Router } from 'express';
-import * as bookControllers from '../controllers/booksController.js'
+import * as userControllers from '../controllers/usersController.js'
 var router = Router();
 
 /* GET users listing. */
-router.get('/', bookControllers.getAllBooksController);
-router.get('/author/:authorName', bookControllers.getAllBooksByAuthorController);
-router.post('/', bookControllers.createBookController);
-router.delete('/author/:authorName', bookControllers.deleteBookByAuthorController);
-router.get('/author/id/:id', bookControllers.getBooksByIdController)
-router.delete('/author/id/:id', bookControllers.deleteBookByIdController);
+router.get('/', userControllers.getAllUsersController);
+router.get('/id/:id', userControllers.getUserByIdController);
+router.get('/email/:email', userControllers.getUsersByEmailController);
+router.get('/login/', userControllers.loginValidationController)
+router.post('/register/', userControllers.createNewUserController);
+router.delete('/id/:id', userControllers.deleteUserByIdController)
 
 export default router;
