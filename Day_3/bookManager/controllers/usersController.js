@@ -20,7 +20,7 @@ const getUserByIdController = async (req, res) => {
 
 const createNewUserController = async (req, res) =>{
     const newUsersList = await userServices.createNewUser(req.body)
-    return res.status(201).json(newUsersList);
+    return res.send( newUsersList);
 }
 
 const deleteUserByIdController = async (req, res) => {
@@ -32,7 +32,7 @@ const deleteUserByIdController = async (req, res) => {
 const loginValidationController = async (req,res) => {
     const emailAndPassword = req.body
     const validatedUser = await userServices.loginValidation(emailAndPassword)
-    return res.status(200).json({ token: validatedUser });
+    return res.send (validatedUser);
 }
 
 export{ getAllUsersController, getUsersByEmailController, getUserByIdController, createNewUserController, deleteUserByIdController, loginValidationController }
