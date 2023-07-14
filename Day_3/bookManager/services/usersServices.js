@@ -76,7 +76,7 @@ const loginValidation = async (emailAndPassword) => {
         if (emailFound && emailFound.password === password) {
             return "Login Successful"
         } else {
-            throw new Error("Wrong Credentials")
+            return ("Wrong Credentials")
         }
 
     }catch (error) {
