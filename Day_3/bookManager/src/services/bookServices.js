@@ -1,6 +1,6 @@
 
 import _ from 'lodash'
-import { booksModel } from "../models/bookSchema.js";
+import { booksModel } from "../shared/database/models/bookSchema.js";
 
 const getAllBooks = async () => {
     try {
@@ -31,8 +31,6 @@ const getBooksByAuthor = async (authorToFind) => {
 }
 
 const getBooksById = async (id) => {
-    //const foundBook = await getAllBooks();
-    //const findBookById = _.find(foundBook, (bookToFindFrom) => bookToFindFrom._id === idOfBook)
 
     try {
         const foundBook = await booksModel.findById(id)
@@ -53,8 +51,6 @@ const getBooksById = async (id) => {
 
 const createBook = async (newBook) => {
     try {
-        //const foundBook = await getAllBooks();
-        //foundBook.push(newBook)
         const foundBook = await booksModel.create(newBook)
         return foundBook
     }
@@ -83,9 +79,6 @@ const deleteBookById = async (id) => {
 
         const bookFound = await booksModel.findById(id)
         if (bookFound) {
-            // _.remove(findBookToDelete, (book) => book.author === author);
-            // await writeFile("books.json", JSON.stringify(findBookToDelete));
-
             await booksModel.deleteOne({ _id: id })
             return "Deleted Successfully"
         } else {

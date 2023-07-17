@@ -1,22 +1,24 @@
 import createError from 'http-errors';
-import express, { json, urlencoded } from 'express';
-import { join } from 'path';
+import express from 'express';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import mongoose from 'mongoose';
+import {connectToMongo} from './src/shared/database/connections/MongoDBDatabase.js'
+import 'dotenv/config.js';
 
 import path from "path";
 const __dirname = path.resolve()
 
-import indexRouter from './routes/index.js';
-import usersRouter from './routes/users.js';
-import booksRouter from './routes/books.js';
+import indexRouter from './src/routes/index.js';
+import usersRouter from './src/routes/users.js';
+import booksRouter from './src/routes/books.js';
+import employeesRouter from './src/routes/employees.js'
+import { connectionTest } from './src/shared/database/connections/mySQLDatabase.js';
 
 var app = express();
 
 // view engine setup
-mongoose.connect('mongodb://127.0.0.1:27017/bookManager')
-  .then(() => console.log('Connected!'));
+connectToMongo();
+console.log(connectionTest);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -28,8 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/books', booksRouter)
-
+app.use('/books', booksRouter);
+app.use('/employees', employeesRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
