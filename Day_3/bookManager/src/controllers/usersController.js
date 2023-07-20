@@ -24,6 +24,7 @@ const getUserByIdController = async (req, res, next) => {
 }
 
 const createNewUserController = async (req, res, next) => {
+    // console.log("controller error");
     try {
         const newUsersList = await userServices.createNewUser(req.body)
         return res.send(newUsersList);

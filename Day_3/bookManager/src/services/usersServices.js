@@ -29,17 +29,21 @@ const getUserById = async (id) => {
 }
 
 const createNewUser = async (newUser) => {
+    
     try {
-        const hashedPassword = await bcrypt.hash(newUser.password, 10);
+        const {firstName, lastName, email, password} = newUser
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         const userFieldsSet = {
-            firstName: newUser.firstName,
-            lastName: newUser.lastName,
-            email: newUser.email,
+            firstname: firstName,
+            lastname: lastName,
+            email: email,
             password: hashedPassword,
         };
-
-        const userToCreate = await userModel.create(userFieldsSet)
+        console.log("$2b$10$whgs.uLcBE0GaavSwhJ/IOYYeRALWVmwlpl1ZoujvopdfyLr/vEQe")
+        
+        const userToCreate = await  userModel.create(userFieldsSet)
+        console.log("Services error");
         if (userToCreate) {
             return ("Profile Created Successfully");
         }
@@ -70,13 +74,15 @@ const deleteUserById = async (userToBeDeletedById) => {
 
 const loginValidation = async (emailAndPassword) => {
     try {
+        
         const { email, password } = emailAndPassword;
         const emailFound = await userModel.findOne({ email: email });
         const checkPassword = await bcrypt.compare(
-            emailAndPassword.password,
-            password
+            password,
+            emailFound.password
         );
-
+        console.log("Services error");
+        
         if (!emailFound) {
             throw new Error("Wrong Credentials")
         }

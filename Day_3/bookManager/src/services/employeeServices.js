@@ -23,7 +23,9 @@ const getMaxSalaryOfEmployeeByDeptartment = async () => {
             FROM departments d
             JOIN dept_emp de ON de.dept_no = d.dept_no
             JOIN employees e ON e.emp_no = de.emp_no
-            JOIN (SELECT de.dept_no, MAX(s.salary) AS max_salary FROM dept_emp de JOIN salaries s ON s.emp_no = de.emp_no GROUP BY de.dept_no) s ON s.dept_no = d.dept_no
+            JOIN(
+                    SELECT de.dept_no, MAX(s.salary) AS max_salary FROM dept_emp de JOIN salaries s ON s.emp_no = de.emp_no GROUP BY de.dept_no
+                ) s ON s.dept_no = d.dept_no
             WHERE s.max_salary = (SELECT MAX(salary) FROM salaries WHERE emp_no = e.emp_no);`
         );
         return maxEmpSalaryDeptWiseQueryResult;
@@ -75,7 +77,7 @@ const getAllEmployeesWithPagination = async () => {
             ORDER BY e.birth_date
             LIMIT ? offset ?;`
 
-        const [result] = await await mySQLConn.query(paginatedEmployees, [limit, offset])
+        const [result] = await mySQLConn.query(paginatedEmployees, [limit, offset])
         
         return result;
     }

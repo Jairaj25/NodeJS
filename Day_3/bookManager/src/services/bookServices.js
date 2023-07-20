@@ -5,11 +5,10 @@ import { booksModel } from "../shared/database/models/bookSchema.js";
 const getAllBooks = async () => {
     try {
         const books = await booksModel.find().lean()
-        console.log(books);
         return books;
     }
     catch (error) {
-        return "No Books Found"
+        return error.message
     }
 };
 
@@ -21,7 +20,7 @@ const getBooksByAuthor = async (authorToFind) => {
             return foundBook;
         }
         else {
-            return "Author Not Found"
+            return ("Author Not Found");
         }
     }
     catch (error) {
@@ -40,22 +39,25 @@ const getBooksById = async (id) => {
             return foundBook;
         }
         else {
-            return "ID not Found"
+            return ("ID not Found");
         }
     }
     catch (error) {
-        console.log("Error on get book by id ")
-        return error
+        return error.message
     }
 }
 
 const createBook = async (newBook) => {
     try {
+        if(newBook){
         const foundBook = await booksModel.create(newBook)
         return foundBook
+        }else{
+            return('Data Incomplete');
+        }
     }
     catch (error) {
-        return error
+        return error.message
     }
 }
 const deleteBookByAuthor = async (authorToBeDeleted) => {
@@ -65,12 +67,12 @@ const deleteBookByAuthor = async (authorToBeDeleted) => {
             await booksModel.deleteOne({ author: authorToBeDeleted });
             return "Deleted Successfully"
         } else {
-            return "Delete Book by author Error"
+            return ("Deletion Error, please try again");
         }
     }
 
     catch (error) {
-        return error
+        return error.message
     }
 }
 
@@ -82,12 +84,12 @@ const deleteBookById = async (id) => {
             await booksModel.deleteOne({ _id: id })
             return "Deleted Successfully"
         } else {
-            return error.message
+            return ("Deletion Error, please try again");
         }
     }
 
     catch (error) {
-        return error
+        return error.message
     }
 }
 

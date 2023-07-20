@@ -8,8 +8,8 @@ var router = Router();
 router.get('/', bookControllers.getAllBooksController);
 router.get('/author/:authorName', bookControllers.getAllBooksByAuthorController);
 router.post('/', authenticate, validateBook, bookControllers.createBookController);
-router.delete('/author/:authorName', bookControllers.deleteBookByAuthorController);
+router.delete('/author/:authorName', authenticate, bookControllers.deleteBookByAuthorController);
 router.get('/id/:id', bookControllers.getBooksByIdController)
-router.delete('/id/:id', bookControllers.deleteBookByIdController);
+router.delete('/id/:id', authenticate, bookControllers.deleteBookByIdController);
 
 export default router;
