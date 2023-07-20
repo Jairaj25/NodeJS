@@ -1,67 +1,106 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Chat App</title>
-</head>
-<body>
-  <input type="text" id="myName" placeholder="Write Your Name">
-  <button id="addUserBtn" onclick="HandleAddUser()">Start Chatting</button>
-  <div>
-    <h2>Active Users:</h2>
-    <ul id="activeUsersList"></ul>
-  </div>
-  <div>
-    <h2>Chat:</h2>
-    <select id="selectUser"></select>
-    <input id="messageInput" type="text" placeholder="Type a message">
-    <button id="sendMessageBtn" onclick="sendMessage()">Send</button>
-  </div>
-  <script src="/socket.io/socket.io.js"></script>
-  <script>
-    const socket = io();
-    let userName = '';
-    function HandleAddUser() {
-      userName = document.getElementById('myName').value;
-      socket.emit('addUser', userName);
-      document.getElementById('myName').disabled = true;
-      document.getElementById('addUserBtn').disabled = true;
-    }
-    function sendMessage() {
-      const recipient = document.getElementById('selectUser').value;
-      const message = document.getElementById('messageInput').value;
-      if (recipient && message) {
-        socket.emit('privateMessage', {
-          recipient: recipient,
-          message: message,
-        });
-      }
-    }
-    socket.on('activeUsers', (activeUsers) => {
-      const activeUsersList = document.getElementById('activeUsersList');
-      activeUsersList.innerHTML = '';
-      activeUsers.forEach((user) => {
-        const userElement = document.createElement('li');
-        userElement.innerText = user;
-        activeUsersList.appendChild(userElement);
-      });
-
-      const selectUser = document.getElementById('selectUser');
-      selectUser.innerHTML = '';
-      activeUsers.forEach((element) => {
-        if (element !== userName) {
-          const option = document.createElement('option');
-          option.value = element;
-          option.innerText = element;
-          selectUser.appendChild(option);
+    <head>
+        <title>Chat App</title>
+    </head>
+    <style>
+        #activeUsersContainer {
+          height: 100%;
+          border-left: 2px solid black;
+            position: absolute;
+            right: 15px;
         }
-      });
-    });
-    socket.on('privateMessage', (msg) => {
+        #h1Element {
+            text-align: center;
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+        .addUserContainer {
+            text-align: center;
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+        .messageElement {
+            text-align: center;
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <div id="activeUsersContainer">
+                <h2>Active Users:</h2>
+                <ul id="activeUsersList"></ul>
+            </div>
+            <div class="vertical-line"></div>
+            <div id="h1Element">
+                <h1>Chat App</h1>
+            </div>
+            <div class="addUserContainer">
+                <input type="text" id="myName" placeholder="Write Your Name">
+                <button id="addUserBtn" onclick="HandleAddUser()">Start Chatting</button>
+            </div>
 
-      const messageContainer = document.createElement('div');
-      messageContainer.innerText = `${msg.sender}: ${msg.message}`;
-      document.body.appendChild(messageContainer);
-    });
-  </script>
-</body>
+            <div class="messageElement">
+                <h2>Chat:</h2>
+                <select id="selectUser"></select>
+                <input id="messageInput" type="text" placeholder="Type a message">
+                <button id="sendMessageBtn" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            const socket = io();
+            let userName = '';
+            function HandleAddUser() {
+                userName = document.getElementById('myName').value;
+                socket.emit('addUser', userName);
+                document.getElementById('myName').disabled = true;
+                document.getElementById('addUserBtn').disabled = true;
+            }
+            function sendMessage() {
+                const recipient = document.getElementById('selectUser').value;
+                const message = document.getElementById('messageInput').value;
+                if (recipient && message) {
+                    socket.emit('privateMessage', {
+                        recipient: recipient,
+                        message: message
+                    });
+                }
+            }
+            socket.on('activeUsers', (activeUsers) => {
+                const activeUsersList = document.getElementById('activeUsersList');
+                activeUsersList.innerHTML = '';
+                activeUsers.forEach((user) => {
+                    const userElement = document.createElement('li');
+                    userElement.innerText = user;
+                    activeUsersList.appendChild(userElement);
+                });
+
+                const selectUser = document.getElementById('selectUser');
+                selectUser.innerHTML = '';
+                activeUsers.forEach((element) => {
+                    if (element !== userName) {
+                        const option = document.createElement('option');
+                        option.value = element;
+                        option.innerText = element;
+                        selectUser.appendChild(option);
+                    }
+                });
+            });
+            socket.on('privateMessage', (msg) => {
+
+                const messageContainer = document.createElement('div');
+                messageContainer.innerText = `${
+                    msg.sender
+                }: ${
+                    msg.message
+                }`;
+                document.body.appendChild(messageContainer);
+            });
+        </script>
+    </body>
 </html>
