@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat App</title>
+</head>
+<body>
+  <input type="text" id="myName" placeholder="Write Your Name">
+  <button id="addUserBtn" onclick="HandleAddUser()">Start Chatting</button>
+  <div>
+    <h2>Active Users:</h2>
+    <ul id="activeUsersList"></ul>
+  </div>
+  <div>
+    <h2>Chat:</h2>
+    <select id="selectUser"></select>
+    <input id="messageInput" type="text" placeholder="Type a message">
+    <button id="sendMessageBtn" onclick="sendMessage()">Send</button>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    let userName = '';
+    function HandleAddUser() {
+      userName = document.getElementById('myName').value;
+      socket.emit('addUser', userName);
+      document.getElementById('myName').disabled = true;
+      document.getElementById('addUserBtn').disabled = true;
+    }
+    function sendMessage() {
+      const recipient = document.getElementById('selectUser').value;
+      const message = document.getElementById('messageInput').value;
+      if (recipient && message) {
+        socket.emit('privateMessage', {
+          recipient: recipient,
+          message: message,
+        });
+      }
+    }
+    socket.on('activeUsers', (activeUsers) => {
+      const activeUsersList = document.getElementById('activeUsersList');
+      activeUsersList.innerHTML = '';
+      activeUsers.forEach((user) => {
+        const userElement = document.createElement('li');
+        userElement.innerText = user;
+        activeUsersList.appendChild(userElement);
+      });
+
+      const selectUser = document.getElementById('selectUser');
+      selectUser.innerHTML = '';
+      activeUsers.forEach((element) => {
+        if (element !== userName) {
+          const option = document.createElement('option');
+          option.value = element;
+          option.innerText = element;
+          selectUser.appendChild(option);
+        }
+      });
+    });
+    socket.on('privateMessage', (msg) => {
+
+      const messageContainer = document.createElement('div');
+      messageContainer.innerText = `${msg.sender}: ${msg.message}`;
+      document.body.appendChild(messageContainer);
+    });
+  </script>
+</body>
+</html>
