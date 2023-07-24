@@ -28,34 +28,6 @@ const getUserById = async (id) => {
     }
 }
 
-const createNewUser = async (newUser) => {
-    
-    try {
-        const {firstName, lastName, email, password} = newUser
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        const userFieldsSet = {
-            firstname: firstName,
-            lastname: lastName,
-            email: email,
-            password: hashedPassword,
-        };
-        console.log("$2b$10$whgs.uLcBE0GaavSwhJ/IOYYeRALWVmwlpl1ZoujvopdfyLr/vEQe")
-        
-        const userToCreate = await  userModel.create(userFieldsSet)
-        console.log("Services error");
-        if (userToCreate) {
-            return ("Profile Created Successfully");
-        }
-        else {
-            throw new Error("User Creationg Error")
-        }
-    }
-    catch (error) {
-        return "Profile Not Created Please try again"
-    }
-}
-
 const deleteUserById = async (userToBeDeletedById) => {
     try {
         const userFound = await userModel.findById(userToBeDeletedById)
@@ -69,6 +41,33 @@ const deleteUserById = async (userToBeDeletedById) => {
     }
     catch (error) {
         return "Profile Not Deleted Please try again"
+    }
+}
+
+const createNewUser = async (newUser) => {
+    
+    try {
+        const {firstName, lastName, email, password} = newUserr
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const userFieldsSet = {
+            firstname: firstName,
+            lastname: lastName,
+            email: email,
+            password: hashedPassword,
+        };
+        
+        const userToCreate = await  userModel.create(userFieldsSet)
+        console.log("Services error");
+        if (userToCreate) {
+            return ("Profile Created Successfully");
+        }
+        else {
+            throw new Error("User Creationg Error")
+        }
+    }
+    catch (error) {
+        return "Profile Not Created Please try again"
     }
 }
 

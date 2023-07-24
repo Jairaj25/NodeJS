@@ -3,7 +3,8 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import {connectToMongo} from './src/shared/database/connections/MongoDBDatabase.js'
-import 'dotenv/config.js';
+import dotenv from "dotenv";
+dotenv.config();
 
 import path from "path";
 const __dirname = path.resolve()
@@ -13,6 +14,7 @@ import usersRouter from './src/routes/users.js';
 import booksRouter from './src/routes/books.js';
 import employeesRouter from './src/routes/employees.js'
 import { connectionTest } from './src/shared/database/connections/mySQLDatabase.js';
+//import { booksModel } from './src/shared/database/models/bookSchema.js';
 
 var app = express();
 
@@ -32,6 +34,29 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/books', booksRouter);
 app.use('/employees', employeesRouter);
+
+// const getAllBooks = async () => {
+//   try {
+//       const books = await booksModel.find().lean()
+//       return books;
+//   }
+//   catch (error) {
+//       return error.message
+//   }
+// };
+
+// const getAllBookController = async (req, res, next) => {
+//   try {
+//       const allBooks = await getAllBooks();
+//       res.status(200);
+//       res.send(allBooks);
+//   }
+//   catch (error) {
+//       next(createError(500, err));
+//   }
+// }
+// app.get('/test', getAllBookController);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
