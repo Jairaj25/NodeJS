@@ -1,0 +1,102 @@
+[
+    {
+        "email": "user1@example.com",
+        "password": "password1",
+        "name": "John Doe"
+    },
+    {
+        "email": "user2@example.com",
+        "password": "password2",
+        "name": "Jane Smith"
+    },
+    {
+        "email": "user3@example.com",
+        "password": "password3",
+        "name": "Michael Johnson"
+    },
+    {
+        "email": "user4@example.com",
+        "password": "password4",
+        "name": "Emily Brown"
+    },
+    {
+        "email": "user5@example.com",
+        "password": "password5",
+        "name": "William Lee"
+    },
+    {
+        "email": "user6@example.com",
+        "password": "password6",
+        "name": "Olivia Martin"
+    },
+    {
+        "email": "user7@example.com",
+        "password": "password7",
+        "name": "James Wilson"
+    },
+    {
+        "email": "user8@example.com",
+        "password": "password8",
+        "name": "Sophia Anderson"
+    },
+    {
+        "email": "user9@example.com",
+        "password": "password9",
+        "name": "Benjamin White"
+    },
+    {
+        "email": "user10@example.com",
+        "password": "password10",
+        "name": "Ava Garcia"
+    },
+    {
+        "email": "user11@example.com",
+        "password": "password11",
+        "name": "Ethan Wilson"
+    },
+    {
+        "email": "user12@example.com",
+        "password": "password12",
+        "name": "Isabella Taylor"
+    },
+    {
+        "email": "user13@example.com",
+        "password": "password13",
+        "name": "Noah Johnson"
+    },
+    {
+        "email": "user14@example.com",
+        "password": "password14",
+        "name": "Mia Brown"
+    },
+    {
+        "email": "user15@example.com",
+        "password": "password15",
+        "name": "Alexander Martinez"
+    },
+    {
+        "email": "user16@example.com",
+        "password": "password16",
+        "name": "Avery Anderson"
+    },
+    {
+        "email": "user17@example.com",
+        "password": "password17",
+        "name": "Evelyn Lee"
+    },
+    {
+        "email": "user18@example.com",
+        "password": "password18",
+        "name": "Daniel Smith"
+    },
+    {
+        "email": "user19@example.com",
+        "password": "password19",
+        "name": "Sofia Garcia"
+    },
+    {
+        "email": "user20@example.com",
+        "password": "password20",
+        "name": "Liam Jones"
+    }
+]
