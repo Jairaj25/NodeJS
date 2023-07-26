@@ -1,5 +1,4 @@
 import _ from 'lodash'
-import url from 'url'
 const companies = [
     { name: "Company One", category: "Finance", start: 1981, end: 2004 },
     { name: "Company Two", category: "Retail", start: 1992, end: 2008 },
@@ -117,4 +116,5 @@ const extractKeyValuePair =  (urlToBeParsed) =>{
 }
 
 console.log('\n\n Question 10: extract key value pairs from url: ',extractKeyValuePair(urlToBeParsed))
+
 
