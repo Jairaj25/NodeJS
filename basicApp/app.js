@@ -12,7 +12,9 @@ const __dirname = path.resolve()
 
 import indexRouter from './src/routes/index.js';
 import usersRouter from './src/routes/users.js';
+import articlesRouter from './src/routes/articles.js'
 import { connectToMongoDB } from './src/shared/database/connections/mongoDBDatabse.js';
+import cors from 'cors'
 
 var app = express();
 connectToMongoDB();
@@ -21,6 +23,7 @@ connectToMongoDB();
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(json());
 app.use(urlencoded({ extended: false }));
@@ -29,6 +32,7 @@ app.use(express.static(join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/articles', articlesRouter)
 
 
 console.log("Server Connected")

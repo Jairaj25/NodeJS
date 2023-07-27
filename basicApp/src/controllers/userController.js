@@ -1,4 +1,4 @@
-import * as userServices from '../services/userService.js'
+import * as userServices from '../services/userService.js';
 
 export const getAllUsersController = async (req, res) => {
     try{
@@ -13,27 +13,33 @@ export const getAllUsersController = async (req, res) => {
 export const loginValidationController = async (req, res) => {
     try{
         if(!("email" in req.body && "password" in req.body)){
-            return res.status(401).json("Body Empty")
+            return res.status(400).json("Body Empty")
         }
         const credentials = req.body;
         const userValidated = await userServices.loginValidation(credentials);
+        if(userValidated === 'Wrong Credentials'){
+            return res.send(404).send();
+        }
+        if(userValidated === 'Wrong password'){
+            return res.send(401).send();
+        }
         return res.status(200).json(userValidated);
     }
     catch(err){
-        return res.status(401).json({ message: "The username and password your provided are invalid" });
+        return res.status(500).json({ message: "The username and password your provided are invalid" });
     }
 }
 
 export const registerUserController = async (req, res) => {
     try{
         if(!("email" in req.body && "password" in req.body && "name" in req.body)){
-            return res.status(401).json("Incomplete Profile")
+            return res.status(400).json("Incomplete Profile")
         }
         const userCreated = await userServices.registerUser(req.body);
-        res.status(200).json(userCreated)
+        res.status(201).json(userCreated)
     }
     catch(err){
-        res.status(401).json({ message: "The username and password your provided are invalid" });
+        res.status(500).json({ message: "The username and password your provided are invalid" });
     }
 }
 

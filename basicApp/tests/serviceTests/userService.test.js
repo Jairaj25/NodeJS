@@ -43,14 +43,16 @@ describe("supertest test case: ", () => {
                 .post('/users/login')
                 .send({
                     email: 'Miraak25@gmail.com',
-                    password: 'TheFirstDragonPriest'
+                    password: 'Miraak'
                 })
                 .expect(200)
                 .end((err, res) => {
                     if (err) {
                         return "Error"
                     }
-                    expect(res.body).to.be.equal("Access Granted");
+                    const {token, message} = res.body
+                    expect(message).to.be.equal("Access Granted");
+                    expect(token).to.be.a('string')
                 })
             done();
 
@@ -139,7 +141,7 @@ describe("supertest test case: ", () => {
             supertest(app)
                 .post('/users/register')
                 .send({
-                    email: 'Miraak2@gmail.com',
+                    email: 'Miraak25@gmail.com',
                     password: 'TheFirstDragonPriest',
                     name: "Miraak"
                 })

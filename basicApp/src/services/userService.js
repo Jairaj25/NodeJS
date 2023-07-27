@@ -25,13 +25,9 @@ export const loginValidation = async (credentials) => {
         if(!passwordCheck){
             return("Wrong password")
         }else{
-            const secretCode = process.env.SECRET_TOKEN;
+            const jwtToken = jwt.sign(email, process.env.SECRET_TOKEN);
 
-            const jwtToken = jwt.sign(email, secretCode);
-
-            //console.log(jwtToken)
-        
-            return ({ token: jwtToken, message: "Logged In " }, "Access Granted")
+            return ({token: jwtToken, message: 'Access Granted'})
         }
     }
     catch(err){
@@ -42,10 +38,6 @@ export const loginValidation = async (credentials) => {
 export const registerUser = async (data) => {
     try{
         const {email, password, name} = data;
-
-        if(!data){
-            return ("Data Empty")
-        }
         //const userExistsCheck = await userModel.findOne({email: email})
 
         if(await userModel.findOne({email: email})){
